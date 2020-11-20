@@ -3,7 +3,7 @@ syntax on
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgray
 set cursorline 
-colorscheme nord
+colorscheme gruvbox
 set termguicolors
 set background=dark
 set noerrorbells
@@ -31,12 +31,9 @@ set relativenumber
 filetype plugin on 
 highlight Visual cterm=bold ctermbg=darkgray ctermfg=NONE
 let mapleader = " "
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
 
 nnoremap <leader>rg :Rg<CR>
+nnoremap <leader>ag :Ag<CR>
 
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
@@ -94,21 +91,36 @@ Plug 'https://github.com/machakann/vim-highlightedyank.git'
 Plug 'https://github.com/ivyl/vim-bling'
 Plug 'danilamihailov/beacon.nvim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'https://github.com/kshenoy/vim-signature.git'
+Plug 'mattn/emmet-vim'
+Plug 'jesseleite/vim-agriculture'
 " Plug 'psliwka/vim-smoothie'
 " Plug 'airblade/vim-gitgutter'
-" 
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-" Plug 'airblade/vim-rooter'
+Plug 'https://github.com/vim-scripts/taglist.vim.git'
+Plug 'frazrepo/vim-rainbow'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
+" Plug 'liuchengxu/vim-which-key'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
 let g:bling_time = 100
 let g:bling_count = 1
 let g:beacon_shrink = 0
+
+" let g:rainbow_active = 1
+" let g:NERDTreeGitStatusPorcelainVersion=1
+let NERDTreeShowHidden=1
+
+nmap <Leader>/ <Plug>AgRawSearch
+vmap <Leader>/ <Plug>AgRawVisualSelection
+nmap <Leader>* <Plug>AgRawWordUnderCursor
 
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
@@ -117,5 +129,14 @@ source $HOME/.config/nvim/plug-config/easymotion.vim
 source $HOME/.config/nvim/plug-config/ctrlp.vim
 source $HOME/.config/nvim/plug-config/closetag.vim
 source $HOME/.config/nvim/plug-config/highlightedyank.vim
+" source $HOME/.config/nvim/plug-config/which-key.vim
 " source $HOME/.config/nvim/plug-config/fzf.vim
-source $HOME/.config/nvim/plug-config/gitgutter.vim
+" source $HOME/.config/nvim/plug-config/gitgutter.vim
+
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+" set notimeout
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
