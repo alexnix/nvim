@@ -1,4 +1,5 @@
 {
+  "tailwindCSS.trace.server": "verbose",
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   // suggestions
   // "suggest.echodocSupport": true,

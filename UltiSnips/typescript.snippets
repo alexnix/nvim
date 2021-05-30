@@ -1,0 +1,67 @@
+snippet fc "Functional component react" b
+import React from "react"
+
+interface $1Props {
+
+}
+
+const $1: React.FC<$1Props> = () => {
+	return <p>$1</p>
+}
+
+export default $1
+endsnippet
+
+snippet cl "console.log" 
+console.log("$1: ", $1)
+endsnippet
+
+snippet vzod "Voyager Zod Model" b
+import * as z from "zod";
+
+const $1Schema = z.object({
+  _id: z.any(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+
+export namespace Producer {
+  export const Schema = $1Schema.omit({
+    _id: true,
+    createdAt: true,
+    updatedAt: true,
+  });
+  export interface Type extends z.infer<typeof Schema> {}
+}
+
+export namespace Consumer {
+  export const Schema = $1Schema;
+  export interface Type extends z.infer<typeof Schema> {}
+}
+endsnippet
+
+snippet vmongoose "Voyager Mongoose Model" b
+import { I$1 } from "@$2/types";
+import mongoose from "mongoose";
+import { syncWithSchema } from "@libs/zod-helpers";
+
+interface $1Document
+  extends Omit<I$1.Consumer.Type, "_id">,
+    mongoose.Document {}
+
+const $1MongooseSchema = new mongoose.Schema(
+  {},
+  { strict: false, timestamps: true }
+);
+$1MongooseSchema.pre(
+  "validate",
+  syncWithSchema(I$1.Producer.Schema)
+);
+
+const $1Model = mongoose.model<$1Document>(
+  "$1",
+  $1MongooseSchema
+);
+
+export default $1Model;
+endsnippet

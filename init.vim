@@ -32,21 +32,30 @@ filetype plugin on
 highlight Visual cterm=bold ctermbg=darkgray ctermfg=NONE
 let mapleader = " "
 
+let g:UltiSnipsExpandTrigger = "<F7>" " map utlisnipets expan trigger to some shitty key I don`t need, so I can still use Tab to cycle autocomplete and with coc this include snippets too
+
 nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>ag :Ag<CR>
 
+" Maybe to this automatically after a file was added by NERDTree ma command
+nnoremap <leader>rp :CtrlPClearCache<CR> 
+
+nnoremap <leader>rt :NERDTreeRefreshRoot<CR>
+
 noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-O>:update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR><Esc>
+inoremap <silent> <C-S>         <C-O>:update<CR><Esc>
+nmap <C-w> :q<CR>
 
 imap jj <Esc>
 
 nmap <leader>t :NERDTreeToggle<CR>
+nmap gn :NERDTreeFocus<CR>
 
 vmap s S
 nmap DO O<Esc>O
 nmap do o<Esc>o
-nmap to o<Esc>o<Esc>kcc
+nmap to o<Esc>o<Esc>ki
 
 " Scroll page wiht Ctrl+j/k
 nmap <C-j> <C-e>
@@ -69,7 +78,9 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'commit': '4e72e5b~'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mbbill/undotree'
 Plug 'lvht/mru'
@@ -87,6 +98,7 @@ Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'https://github.com/Yggdroot/indentLine.git'
+Plug 'emilsoman/indent-highlight.vim'
 Plug 'https://github.com/machakann/vim-highlightedyank.git'
 Plug 'https://github.com/ivyl/vim-bling'
 Plug 'danilamihailov/beacon.nvim'
@@ -98,14 +110,20 @@ Plug 'jesseleite/vim-agriculture'
 " Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/vim-scripts/taglist.vim.git'
 Plug 'frazrepo/vim-rainbow'
+Plug 'vim-scripts/loremipsum'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 " Plug 'liuchengxu/vim-which-key'
 
+Plug 'https://github.com/google/vim-searchindex.git'
+Plug 'SirVer/ultisnips'
+
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'https://github.com/joshdick/onedark.vim.git'
+Plug 'fcpg/vim-orbital'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()

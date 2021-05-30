@@ -55,8 +55,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nmap <silent> "gd :sp<CR><Plug>(coc-definition)
-nmap <silent> %gd :vsp<CR><Plug>(coc-definition)
+nmap <silent> "gd :vsp<CR><Plug>(coc-definition)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -144,3 +143,5 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+let b:coc_root_patterns = ['.git', '.env', 'package.json']
